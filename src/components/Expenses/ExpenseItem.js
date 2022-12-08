@@ -1,14 +1,15 @@
 import "./ExpenseItem.css";
 import Calender from "./Calender";
+import Card from "../Containers/Card";
 
 export default function ExpenseItem(props) {
   return (
-    <div className="expense-item">
+    <Card className="expense-item">
       <Calender date={props.date} />
       <div className="expense-item__description">
         <h2>{props.title}</h2>
-        <div className="expense-item__price">{props.amount}</div>
+        <Card className="expense-item__price">{props.amount}</Card>
       </div>
-    </div>
+    </Card>
   );
 }
