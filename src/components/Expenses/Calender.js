@@ -1,5 +1,5 @@
 import "./Calender.css";
-import Card from "../Containers/Card";
+import Card from "../UI/Card";
 
 export default function Calender(props) {
   const month = props.date.toLocaleString("en-US", { month: "long" });
