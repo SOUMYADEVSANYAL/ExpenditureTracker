@@ -1,19 +1,33 @@
-import NewExpenseForm from './NewExpenseForm';
-import './NewExpense.css';
+import NewExpenseForm from "./NewExpenseForm";
+import "./NewExpense.css";
+import { useState } from "react";
 
-export default function NewExpenses(props){
+export default function NewExpenses(props) {
+  const [isEditing, setIsEditing] = useState(false);
 
-  function getNewExpenseDataHandler(newExpenseData){
+  function changeIsEditingState() {
+    setIsEditing(true);
+  }
+
+  function changeIsEditingStateToFalse(){
+    setIsEditing(false);
+  }
+
+  function getNewExpenseDataHandler(newExpenseData) {
     const modifiedNewExpenseData = {
       id: Math.random().toString(),
-      ...newExpenseData
-    }
+      ...newExpenseData,
+    };
     props.getNewExpenseData(modifiedNewExpenseData);
   }
 
-    return (
-        <div className='new-expense'>
-            <NewExpenseForm getNewExpenseData={getNewExpenseDataHandler}/>
-        </div>
-    );
+  return (
+    <div className="new-expense">
+      {isEditing ? (
+        <NewExpenseForm getNewExpenseData={getNewExpenseDataHandler} changeIsEditingStateToFalse={changeIsEditingStateToFalse} />
+      ) : (
+        <button onClick={changeIsEditingState}>Add Expense</button>
+      )}
+    </div>
+  );
 }

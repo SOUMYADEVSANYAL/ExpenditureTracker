@@ -3,6 +3,7 @@ import "./Expenses.css";
 import Card from "../UI/Card";
 import ExpenseFilter from "./ExpenseFilter";
 import { useState } from "react";
+import ExpensesChart from "./ExpensesChart";
 
 export default function Expenses(props) {
   const [filterYear, setFilterYear] = useState("2019");
@@ -21,6 +22,7 @@ export default function Expenses(props) {
         selectedYear={filterYear}
         getFilterDate={getFilterDateHandler}
       />
+      <ExpensesChart expenses={filteredList} />
       {filteredList.length === 0 ? (
         <h1>No expense done in this year.</h1>
       ) : (

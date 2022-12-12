@@ -17,7 +17,7 @@ export default function NewExpenseForm(props) {
 
     const newExpenseData= {
       title: inputTitle,
-      amount: inputAmount,
+      amount: +inputAmount,
       date: new Date(inputDate)
     }
 
@@ -27,7 +27,10 @@ export default function NewExpenseForm(props) {
     setInputAmount("");
     setInputDate("");
 
+    props.changeIsEditingStateToFalse();
+
   }
+
 
   return (
     <form onSubmit={submitHandler}>
@@ -46,6 +49,7 @@ export default function NewExpenseForm(props) {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button onClick={props.changeIsEditingStateToFalse}>Cancel</button>
         <button type="submit">Add</button>
       </div>
     </form>
